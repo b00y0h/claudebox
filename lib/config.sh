@@ -274,6 +274,7 @@ get_profile_javascript() {
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ENV NVM_DIR="/home/claude/.nvm"
 RUN . $NVM_DIR/nvm.sh && nvm install --lts
+RUN chown -R claude:claude $NVM_DIR
 USER claude
 RUN bash -c "source $NVM_DIR/nvm.sh && npm install -g typescript eslint prettier yarn pnpm"
 USER root
